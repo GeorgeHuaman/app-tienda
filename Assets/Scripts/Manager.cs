@@ -12,16 +12,16 @@ public class Manager : MonoBehaviour
 
     [SerializeField] private int currentMainMaterialIndex = 0;
     [SerializeField] private int currentVariantIndex = 0;
-    public Image mainTextures;
-    public Image variantTextures;
+    //public Image mainTextures;
+    //public Image variantTextures;
     private void Awake()
     {
         Instance = this;
     }
     private void Start()
     {
-        UpdateMainTextureUI();
-        UpdateVariantTextureUI();
+        //UpdateMainTextureUI();
+        //UpdateVariantTextureUI();
     }
     public void ChangeMainMaterial()
     {
@@ -30,8 +30,8 @@ public class Manager : MonoBehaviour
             currentMainMaterialIndex = (currentMainMaterialIndex + 1) % mainMaterials.Count;
             currentVariantIndex = 0;
             //ApplyMainMaterial();
-            UpdateMainTextureUI();
-            UpdateVariantTextureUI();
+            //UpdateMainTextureUI();
+            //UpdateVariantTextureUI();
 
         }
     }
@@ -43,7 +43,7 @@ public class Manager : MonoBehaviour
 
             currentVariantIndex = (currentVariantIndex + 1) % mainMaterials[currentMainMaterialIndex].variants.Count;
             //ApplyVariantMaterial();
-            UpdateVariantTextureUI();
+            //UpdateVariantTextureUI();
 
         }
     }
@@ -65,29 +65,29 @@ public class Manager : MonoBehaviour
             selectedRenderer.material = SelectedMaterial;
         }
     }
-    private void UpdateMainTextureUI()
-    {
-        Material currentMaterial = mainMaterials[currentMainMaterialIndex].mainMaterial;
-        Texture2D albedoTexture = (Texture2D)currentMaterial.GetTexture("_MainTex");
+    //private void UpdateMainTextureUI()
+    //{
+    //    Material currentMaterial = mainMaterials[currentMainMaterialIndex].mainMaterial;
+    //    Texture2D albedoTexture = (Texture2D)currentMaterial.GetTexture("_MainTex");
 
-        if (albedoTexture != null)
-        {
-            Sprite albedoSprite = Sprite.Create(albedoTexture, new Rect(0, 0, albedoTexture.width, albedoTexture.height), new Vector2(0.5f, 0.5f));
-            mainTextures.sprite = albedoSprite;
-        }
-    }
+    //    if (albedoTexture != null)
+    //    {
+    //        Sprite albedoSprite = Sprite.Create(albedoTexture, new Rect(0, 0, albedoTexture.width, albedoTexture.height), new Vector2(0.5f, 0.5f));
+    //        mainTextures.sprite = albedoSprite;
+    //    }
+    //}
 
-    private void UpdateVariantTextureUI()
-    {
-        Material currentVariant = mainMaterials[currentMainMaterialIndex].variants[currentVariantIndex];
-        Texture2D albedoTexture = (Texture2D)currentVariant.GetTexture("_MainTex");
+    //private void UpdateVariantTextureUI()
+    //{
+    //    Material currentVariant = mainMaterials[currentMainMaterialIndex].variants[currentVariantIndex];
+    //    Texture2D albedoTexture = (Texture2D)currentVariant.GetTexture("_MainTex");
 
-        if (albedoTexture != null)
-        {
-            Sprite albedoSprite = Sprite.Create(albedoTexture, new Rect(0, 0, albedoTexture.width, albedoTexture.height), new Vector2(0.5f, 0.5f));
-            variantTextures.sprite = albedoSprite;
-        }
-    }
+    //    if (albedoTexture != null)
+    //    {
+    //        Sprite albedoSprite = Sprite.Create(albedoTexture, new Rect(0, 0, albedoTexture.width, albedoTexture.height), new Vector2(0.5f, 0.5f));
+    //        variantTextures.sprite = albedoSprite;
+    //    }
+    //}
     public void SelectMaterial(Material material)
     {
         SelectedMaterial = material;
